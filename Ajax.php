@@ -1,6 +1,61 @@
 <html>
 <head>
+  <?php
+  // Tableau de nom
+  $a[] = "Anna";
+  $a[] = "Brittany";
+  $a[] = "Cinderella";
+  $a[] = "Diana";
+  $a[] = "Eva";
+  $a[] = "Fiona";
+  $a[] = "Gunda";
+  $a[] = "Hege";
+  $a[] = "Inga";
+  $a[] = "Johanna";
+  $a[] = "Kitty";
+  $a[] = "Linda";
+  $a[] = "Nina";
+  $a[] = "Ophelia";
+  $a[] = "Petunia";
+  $a[] = "Amanda";
+  $a[] = "Raquel";
+  $a[] = "Cindy";
+  $a[] = "Doris";
+  $a[] = "Eve";
+  $a[] = "Evita";
+  $a[] = "Sunniva";
+  $a[] = "Tove";
+  $a[] = "Unni";
+  $a[] = "Violet";
+  $a[] = "Liza";
+  $a[] = "Elizabeth";
+  $a[] = "Ellen";
+  $a[] = "Wenche";
+  $a[] = "Vicky";
 
+  // On récupèere le parametre q dans l'URL
+  $q = $_REQUEST["q"];
+
+  $indice = "";
+
+  // lookup all hints from array if $q is different from ""
+  if ($q !== "") {
+      $q = strtolower($q);
+      $long=strlen($q);
+      foreach($a as $nom) {
+          if (stristr($q, substr($nom, 0, $long))) {
+              if ($indice === "") {
+                  $indice = $nom;
+              } else {
+                  $indice .= ", $nom";
+              }
+          }
+      }
+  }
+
+  // Affiche "aucune suggestion" si le nom est inconnue
+  echo $indice === "" ? "aucune suggestion" : $indice;
+  ?>
 </head>
 <body>
   <script>
